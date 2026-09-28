@@ -17,7 +17,7 @@
       "author": {
         "name": "Ivan Yanowsky"
       },
-      "source": "./"
+      "source": "./plugins/image-to-ansi"
     },
     {
       "name": "voice",
@@ -26,7 +26,7 @@
       "author": {
         "name": "Ivan Yanowsky"
       },
-      "source": "./voice"
+      "source": "./plugins/voice"
     }
   ]
 }
