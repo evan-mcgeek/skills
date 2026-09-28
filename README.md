@@ -6,7 +6,7 @@ A [Claude Code](https://claude.com/claude-code) plugin marketplace.
 
 | Plugin | What it does |
 |---|---|
-| [voice](plugins/voice/) | Builds a `VOICE.md` so agents can write or speak as you without sounding like AI. `/voice:write` learns from your pre-AI Jira, Confluence, Slack or email writing. `/voice:speak` learns from a short spoken interview. |
+| [voice](plugins/voice/) | Lets agents write and speak as you without sounding like AI. `/voice:init` builds your `VOICE.md` once from your pre-AI Jira and Confluence writing plus a short spoken interview. `/voice:write` (the default) and `/voice:speak` then produce output in your voice. |
 | [image-to-ansi](plugins/image-to-ansi/) | Converts an image into terminal ANSI or ASCII art for CLI splash screens, TUI banners, README art and `neofetch`-style logos. |
 
 ## Install

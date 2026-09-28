@@ -21,8 +21,8 @@
     },
     {
       "name": "voice",
-      "description": "Build a VOICE.md profile so agents can write or speak as you without sounding like AI. /voice:write analyzes your pre-AI writing, /voice:speak a short spoken interview.",
-      "version": "1.0.0",
+      "description": "Lets agents write and speak as you. /voice:init builds your VOICE.md once from your pre-AI writing and a short interview; /voice:write (default) and /voice:speak produce output in your voice.",
+      "version": "1.1.0",
       "author": {
         "name": "Ivan Yanowsky"
       },

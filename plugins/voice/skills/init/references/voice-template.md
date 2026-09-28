@@ -1,6 +1,6 @@
 # VOICE.md template
 
-Use this structure. Replace everything in angle brackets with what the analysis found. Sections 3-9 come from `/voice:write`; section 10 comes from `/voice:speak`. Include only what the modes you ran support. Drop sections that don't apply (e.g. no emails), add ones that do (e.g. Slack, Confluence). The text in this template is a proven shape; keep the wording style: direct instructions to the agent, short, concrete.
+Use this structure. Replace everything in angle brackets with what the analysis found. Sections 3-9 are the written voice (used by `/voice:write`), section 10 is the spoken voice (used by `/voice:speak`). If the interview was skipped, leave section 10 out. Drop sections that don't apply (e.g. no emails), add ones that do (e.g. Slack, Confluence). The text in this template is a proven shape; keep the wording style: direct instructions to the agent, short, concrete.
 
 ````markdown
 # VOICE.md
@@ -128,7 +128,7 @@ One short example per type, written fully in the voice, placeholder names only.
 
 ---
 
-## 10. Spoken style <only if /voice:speak was run>
+## 10. Spoken style <from the interview>
 
 Use this for anything meant to be heard or to feel spoken: voice-note scripts, talking points, casual chat. Not for Jira or email unless the written sections above say so.
 

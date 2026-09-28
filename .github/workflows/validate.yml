@@ -29,6 +29,15 @@ jobs:
             echo "OK: $f"
           done
 
+      - name: Check .skill bundles match their skill folders
+        run: |
+          for b in $(find plugins -name '*.skill'); do
+            n=$(basename "$b" .skill); tmp=$(mktemp -d)
+            unzip -q "$b" -d "$tmp"
+            diff -r "$tmp/$n" "$(dirname "$b")/skills/$n" || { echo "::error file=$b::out of date with skills/$n"; exit 1; }
+            echo "OK: $b"
+          done
+
       # Unpinned deliberately: this needs to validate against whatever Claude Code
       # version installers actually get, not a version pinned the day this workflow
       # was written. `claude --version` below records what actually ran.
