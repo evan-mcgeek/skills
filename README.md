@@ -93,6 +93,10 @@ by name. Ask for any of these and it'll trigger:
   file, a self-rendering shell script, a language string literal (Python /
   Go / Rust / JS / C), or wiring into a TUI framework's live render loop.
 
+## More in this marketplace
+
+- [voice](voice/) - build a `VOICE.md` so agents can write or speak as you without sounding like AI.
+
 ## License
 
 MIT

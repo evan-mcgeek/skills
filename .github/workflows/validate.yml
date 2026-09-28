@@ -22,7 +22,7 @@ jobs:
 
       - name: Validate SKILL.md frontmatter
         run: |
-          for f in $(find skills -name SKILL.md); do
+          for f in $(find . -path ./.git -prune -o -name SKILL.md -print); do
             head -1 "$f" | grep -q '^---$' || { echo "::error file=$f::missing YAML frontmatter"; exit 1; }
             grep -q '^name:' "$f" || { echo "::error file=$f::missing 'name' in frontmatter"; exit 1; }
             grep -q '^description:' "$f" || { echo "::error file=$f::missing 'description' in frontmatter"; exit 1; }

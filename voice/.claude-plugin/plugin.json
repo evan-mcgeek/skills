@@ -1,0 +1,10 @@
+{
+  "name": "voice",
+  "description": "Build a VOICE.md profile so agents can write or speak as you without sounding like AI. /voice:write analyzes your pre-AI Jira/Confluence writing, /voice:speak analyzes a short spoken interview. Use either or both.",
+  "version": "1.0.0",
+  "author": {
+    "name": "Ivan Yanowsky",
+    "email": "evan.mcgeek@gmail.com"
+  },
+  "homepage": "https://github.com/evan-mcgeek/skills"
+}
