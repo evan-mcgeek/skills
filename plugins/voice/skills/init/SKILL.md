@@ -1,21 +1,21 @@
 ---
 name: init
-description: One-time init that builds a person's VOICE.md style profile from their own pre-AI writing (Jira comments, tickets, Confluence, Slack, emails) plus a short spoken interview, then wires it into CLAUDE.md / AGENTS.md so /voice:write and /voice:speak can produce output as them. Invoked as /voice:init. Parses their Jira/Confluence history, conducts the spoken interview, and writes VOICE.md. Use when someone wants agents to sound like them and has no VOICE.md yet, wants to rebuild or retune it, or asks to set up or init their voice profile.
+description: One-time init that builds a person's VOICE.md style profile from their own pre-AI writing (whatever they write in: Slack, email, Jira, docs, anything else) plus a short spoken interview, then wires it into CLAUDE.md / AGENTS.md so /voice:write and /voice:speak can produce output as them. Invoked as /voice:init. Collects their writing samples, conducts the spoken interview, and writes VOICE.md. Use when someone wants agents to sound like them and has no VOICE.md yet, wants to rebuild or retune it, or asks to set up or init their voice profile.
 ---
 
 # /voice:init
 
 Build `VOICE.md` once. After this, `/voice:write` and `/voice:speak` read it to produce output in the user's voice. Success means a colleague who works with the user every day can't tell an agent wrote it.
 
-Build from evidence, not from how the user thinks they write or talk. People describe their own style badly; their real comments and unscripted speech don't lie.
+Build from evidence, not from how the user thinks they write or talk. People describe their own style badly; their real messages and unscripted speech don't lie.
 
-If a VOICE.md already exists, ask whether to rebuild it or retune specific parts. When retuning, keep the hard rules and everything the user didn't ask to change.
+If a VOICE.md already exists, ask whether to rebuild it from scratch or tune specific parts. For tuning, switch to `/voice:update`.
 
 ## Where to run this
 
-Run init in the Claude chat app, desktop or web, with the Atlassian connector enabled. In the desktop app that means the Chat tab, not the Code tab: voice mode lives in Chat only. That's the one place where everything init needs works together: the connector for parsing Jira and Confluence, voice mode for the interview, and file creation for VOICE.md. Voice mode is the same on desktop and web. The phone is great for talking but awkward for reviewing hundreds of samples, so it's only worth using for the interview if the user prefers it.
+Run init in the Claude chat app, desktop or web. In the desktop app that means the Chat tab, not the Code tab: voice mode lives in Chat only. That's the one place where everything init needs works together: uploading samples, voice mode for the interview, and file creation for VOICE.md. Voice mode is the same on desktop and web. The phone is great for talking but awkward for handling hundreds of samples, so it's only worth using for the interview if the user prefers it.
 
-Claude Code has no voice mode, only dictation. If init is started there, do the Jira parsing and the written voice, write VOICE.md, and tell the user plainly that the interview works much better in the chat app: they can upload this skill there and rerun it to add the spoken section. Offer dictation as a fallback if they'd rather stay.
+Claude Code has no voice mode, only dictation. If init is started there, collect the samples and do the written voice, write VOICE.md, and tell the user plainly that the interview works much better in the chat app: they can run `/voice:update` there later to add the spoken section. Offer dictation as a fallback if they'd rather stay.
 
 ## Steps
 
@@ -29,16 +29,15 @@ Claude Code has no voice mode, only dictation. If init is started there, do the 
 
 ## 1. Collect pre-AI writing samples
 
-Use only text the user typed themselves. If agents have already posted under their name, those comments sit in the same history, and learning from them clones a clone: the profile drifts toward generic AI style. Before fetching anything, ask two things in one go:
+Use only text the user typed themselves. If agents have already written under their name, that text sits in the same history, and learning from it clones a clone: the profile drifts toward generic AI style. Before collecting anything, ask three things in one go:
 
 - **Cutoff date:** roughly when did you start writing with AI? Everything must be from before that.
-- **Agent posts:** have any agents posted as you? If yes, their comments must be excluded (by date, or by a marker the user recognizes).
+- **Agent posts:** have any agents posted as you? If yes, that text must be excluded (by date, or by a marker the user recognizes).
+- **Sources:** where do you write the most? Slack, email, Jira, docs, anything else.
 
-Then parse Jira (and Confluence, if they use it) following `references/jira-parsing.md`. It covers pulling issues and comments through an Atlassian connector, filtering to the user's own pre-cutoff text, and saving everything to a `voice-samples.md` file. Aim for 100+ comments and 20+ tickets or pages.
+Then collect samples following `references/collecting-samples.md`. By default the user pastes or uploads them; if a tool for one of their sources is already connected, offer to pull them through it. Save everything to a `voice-samples.md` file. Aim for 100+ messages and 20+ longer pieces (tickets, docs, long emails).
 
-If no Atlassian connector is available, look for one in the connector directory first. If there's none, ask the user for an export or paste, in the same format as the samples file.
-
-Keep `voice-samples.md` next to VOICE.md. A later retune can reuse it instead of refetching.
+Keep `voice-samples.md` next to VOICE.md. `/voice:update` reuses it instead of collecting again.
 
 Read every sample. Rare habits (a strikethrough self-correction, the one joke they make) are exactly what makes a profile convincing, so don't skim.
 
@@ -92,7 +91,7 @@ Recommend global placement, since posting as a person isn't tied to one repo.
 
 ```markdown
 ## Writing on my behalf
-Before producing anything on my behalf (Jira comments, tickets, Confluence, email replies, any message sent under my name), read and follow @~/.claude/VOICE.md. Use /voice:write by default. Use /voice:speak only when I ask for spoken output. The hard rules in VOICE.md override any other style guidance.
+Before producing anything on my behalf (messages, comments, tickets, docs, email replies, anything sent under my name), read and follow @~/.claude/VOICE.md. Use /voice:write by default. Use /voice:speak only when I ask for spoken output. The hard rules in VOICE.md override any other style guidance.
 ```
 
 **Claude Code (one project):** `VOICE.md` next to the project's `CLAUDE.md`, referenced as `@VOICE.md`.
@@ -103,6 +102,6 @@ In the chat app, you can't reach the user's machine: give VOICE.md as a download
 
 ## 7. Test and tune
 
-Produce two or three outputs the way the user will actually use the plugin: a `/voice:write` Jira comment or two, and a short `/voice:speak` piece if the interview was done. Ask the user to judge them. Fix the profile, not just the output, so the lesson sticks.
+Produce two or three outputs the way the user will actually use the plugin: a `/voice:write` message or two in the channels they actually use, and a short `/voice:speak` piece if the interview was done. Ask the user to judge them. Fix the profile, not just the output, so the lesson sticks.
 
-Mention that the real test is live use, and that rerunning `/voice:init` later can retune specific sections.
+Mention that the real test is live use, and that `/voice:update` tunes it anytime: from comments, corrected drafts, new samples, or another interview.
