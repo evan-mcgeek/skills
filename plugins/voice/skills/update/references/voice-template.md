@@ -1,6 +1,6 @@
 # VOICE.md template
 
-Use this structure. Replace everything in angle brackets with what the analysis found. Sections 3-9 are the written voice (used by `/voice:write`), section 10 is the spoken voice (used by `/voice:speak`). If the interview was skipped, leave section 10 out. Drop sections that don't apply (e.g. no emails), add ones that do (e.g. Slack, Confluence). The text in this template is a proven shape; keep the wording style: direct instructions to the agent, short, concrete.
+Use this structure. Replace everything in angle brackets with what the analysis found. Sections 3-9 are the written voice (used by `/voice:write`), section 10 is the spoken voice (used by `/voice:speak`). If the interview was skipped, leave section 10 out. Drop sections that don't apply (e.g. no emails or no team chat), add ones that do (e.g. Confluence). The text in this template is a proven shape; keep the wording style: direct instructions to the agent, short, concrete.
 
 ````markdown
 # VOICE.md
@@ -147,7 +147,18 @@ Use this for anything meant to be heard or to feel spoken: voice-note scripts, t
 
 ---
 
-## 12. Final check before posting
+## 12. Team chat (Teams / Slack) <if relevant>
+
+Team chat is usually much shorter and looser than tickets or email. Don't carry the ticket structure over.
+
+- <Length, e.g. one line saying what it is, a link, at most one closing line.>
+- <Opening, e.g. lowercase start, no greeting, no sign-off.>
+- <What gets left out, e.g. no install steps or explanations, the link covers the details.>
+- <Humor and emoji, as the samples show them.>
+
+---
+
+## 13. Final check before posting
 
 - Would <Name>'s teammate believe <they> typed this?
 - Does it follow every hard rule?

@@ -8,6 +8,7 @@ Go through every item with the samples in front of you. Write down concrete evid
 - Typical length. Share of 1-3 line messages vs. long ones.
 - Shape of long messages: context → numbered points → conclusion word → ask? Something else?
 - Do quick updates drop the subject or start lowercase ("all good", "upd: ...")?
+- How does it change per channel? Team chat (Teams, Slack) is often much shorter and looser than tickets or email: less structure, more emoji, no explanations.
 
 ## Rhythm
 - Sentence length. Short and chained ("so ... and ...") or long and nested?
