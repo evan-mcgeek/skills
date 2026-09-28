@@ -13,7 +13,6 @@
     {
       "name": "image-to-ansi",
       "description": "Convert an image into a terminal-renderable string of ANSI colour codes and block/ASCII characters \u2014 CLI splash screens, TUI banners, neofetch-style logos, README art.",
-      "version": "0.0.1",
       "author": {
         "name": "Ivan Yanowsky"
       },
@@ -22,7 +21,6 @@
     {
       "name": "voice",
       "description": "Lets agents write and speak as you. /voice:init builds your VOICE.md once from your pre-AI writing and a short interview; /voice:write (default) and /voice:speak produce output in your voice; /voice:update tunes it anytime.",
-      "version": "1.3.1",
       "author": {
         "name": "Ivan Yanowsky"
       },

@@ -1,7 +1,6 @@
 {
   "name": "image-to-ansi",
   "description": "Convert an image (PNG/JPG/GIF/WebP/SVG/HEIC) into a terminal-renderable string of ANSI colour codes and block/ASCII characters \u2014 CLI splash screens, TUI banners, neofetch-style logos, README art. Bundles chafa guidance plus a dependency-light Python fallback renderer and a preview rasteriser.",
-  "version": "0.0.1",
   "author": {
     "name": "Ivan Yanowsky",
     "email": "evan.mcgeek@gmail.com"
