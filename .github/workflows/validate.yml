@@ -37,5 +37,7 @@ jobs:
           npm install --global @anthropic-ai/claude-code
           claude --version
 
-      - name: Validate plugin manifest
-        run: claude plugin validate .
+      - name: Validate marketplace and plugin manifests
+        run: |
+          claude plugin validate .
+          for d in plugins/*/; do claude plugin validate "$d"; done

@@ -12,7 +12,7 @@ Use either or both. Running `/voice:write` first, then `/voice:speak`, gives the
 Try it locally:
 
 ```bash
-claude --plugin-dir ./voice
+claude --plugin-dir ./plugins/voice
 ```
 
 Or install from this marketplace:
