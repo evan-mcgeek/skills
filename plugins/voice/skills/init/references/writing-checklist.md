@@ -3,10 +3,10 @@
 Go through every item with the samples in front of you. Write down concrete evidence (a short quote, how often it appears), not impressions. "Uses 'as well' as an opener and as a trailing tag, ~30 times in 190 comments" is useful. "Casual tone" is not.
 
 ## Structure
-- How does a comment open? @mention, greeting, straight to content, lowercase?
+- How does a message open? @mention, greeting, straight to content, lowercase?
 - How does it close? cc line, question, next step, sign-off, nothing?
-- Typical length. Share of 1-3 line comments vs. long ones.
-- Shape of long comments: context → numbered points → conclusion word → ask? Something else?
+- Typical length. Share of 1-3 line messages vs. long ones.
+- Shape of long messages: context → numbered points → conclusion word → ask? Something else?
 - Do quick updates drop the subject or start lowercase ("all good", "upd: ...")?
 
 ## Rhythm
@@ -33,19 +33,19 @@ Go through every item with the samples in front of you. Write down concrete evid
 - Numbered vs. bulleted lists.
 - Links inline or pasted raw.
 - Strikethrough self-corrections.
-- Headers: ever? Almost never in real human comments.
+- Headers: ever? Almost never in real human messages.
 
 ## Audience switching
-- Compare comments to developers vs. product/business/QA vs. senior people. What changes: depth, jargon, length, formality, abbreviations?
+- Compare messages to developers vs. product/business/QA vs. senior people. What changes: depth, jargon, length, formality, abbreviations?
 
 ## Message types
 Find the recurring kinds and capture one real pattern for each: investigation result, answering a question, release/availability update, test instructions, asking for info, delegating, status update, POC/spike outcome. Add whatever else is frequent for this person.
 
-## Tickets and pages
+## Longer pieces (tickets, docs, long emails)
 - Title conventions (prefixes like [APP] [API] [Bug], casing).
 - Typical opening sentence of a description.
 - When sections appear and what they're called (Tasks:, Acceptance criteria:, Goal:).
-- Confluence: how pages start, header usage, length, tone vs. comments.
+- Docs and wiki pages: how they start, header usage, length, tone vs. messages.
 
 ## Non-native markers (if relevant)
 List recurring slips (missing articles, "in case if", "what's about", "would you mind to", word-order patterns, typos). These go in the profile as things NOT to reproduce if the user wants correct grammar, so the agent knows which "authentic" features to drop.

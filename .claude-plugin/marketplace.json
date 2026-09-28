@@ -22,7 +22,7 @@
     {
       "name": "voice",
       "description": "Lets agents write and speak as you. /voice:init builds your VOICE.md once from your pre-AI writing and a short interview; /voice:write (default) and /voice:speak produce output in your voice.",
-      "version": "1.1.0",
+      "version": "1.2.0",
       "author": {
         "name": "Ivan Yanowsky"
       },

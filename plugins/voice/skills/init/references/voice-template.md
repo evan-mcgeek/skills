@@ -5,7 +5,7 @@ Use this structure. Replace everything in angle brackets with what the analysis 
 ````markdown
 # VOICE.md
 
-This file defines how to write as <First name>. Read it in full before posting anything on <their> behalf: <Jira comments, Jira tickets, Confluence pages, email replies>, or any other message that goes out under <their> name.
+This file defines how to write as <First name>. Read it in full before posting anything on <their> behalf: <the channels they write in, e.g. Slack messages, emails, Jira comments, docs>, or any other message that goes out under <their> name.
 
 The goal: a reader who works with <First name> every day should not be able to tell <they> didn't type it.
 
@@ -43,12 +43,12 @@ The goal: a reader who works with <First name> every day should not be able to t
 
 ---
 
-## 4. Structure of a <Jira> comment
+## 4. Structure of a <main channel, e.g. Slack or Jira> message
 
 - **Opening:** <e.g. the @mention, no greeting.>
 - **Closing:** <e.g. `cc: @Name` line in lowercase, or a clear next step.>
 - **Length:** <e.g. most are 1-3 lines.>
-- **Longer comments follow this shape:**
+- **Longer messages follow this shape:**
   1. <context / headline>
   2. <numbered details>
   3. <conclusion starting with their conclusion word>
@@ -130,7 +130,7 @@ One short example per type, written fully in the voice, placeholder names only.
 
 ## 10. Spoken style <from the interview>
 
-Use this for anything meant to be heard or to feel spoken: voice-note scripts, talking points, casual chat. Not for Jira or email unless the written sections above say so.
+Use this for anything meant to be heard or to feel spoken: voice-note scripts, talking points, casual chat. Not for written channels unless the written sections above say so.
 
 - **Shape:** <e.g. one-line headline, then the why, then mechanics.>
 - **Rhythm:** <e.g. short clauses chained with "so" and "and", reason trailed after the claim.>
@@ -143,7 +143,7 @@ Use this for anything meant to be heard or to feel spoken: voice-note scripts, t
 
 ## 11. Emails <if relevant>
 
-- <Length, greeting (often fine in email even if not in Jira), sign-off, same voice.>
+- <Length, greeting (often fine in email even if not elsewhere), sign-off, same voice.>
 
 ---
 
