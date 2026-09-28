@@ -9,13 +9,13 @@ Build `VOICE.md` once. After this, `/voice:write` and `/voice:speak` read it to 
 
 Build from evidence, not from how the user thinks they write or talk. People describe their own style badly; their real messages and unscripted speech don't lie.
 
-If a VOICE.md already exists, ask whether to rebuild it or retune specific parts. When retuning, keep the hard rules and everything the user didn't ask to change.
+If a VOICE.md already exists, ask whether to rebuild it from scratch or tune specific parts. For tuning, switch to `/voice:update`.
 
 ## Where to run this
 
 Run init in the Claude chat app, desktop or web. In the desktop app that means the Chat tab, not the Code tab: voice mode lives in Chat only. That's the one place where everything init needs works together: uploading samples, voice mode for the interview, and file creation for VOICE.md. Voice mode is the same on desktop and web. The phone is great for talking but awkward for handling hundreds of samples, so it's only worth using for the interview if the user prefers it.
 
-Claude Code has no voice mode, only dictation. If init is started there, collect the samples and do the written voice, write VOICE.md, and tell the user plainly that the interview works much better in the chat app: they can upload this skill there and rerun it to add the spoken section. Offer dictation as a fallback if they'd rather stay.
+Claude Code has no voice mode, only dictation. If init is started there, collect the samples and do the written voice, write VOICE.md, and tell the user plainly that the interview works much better in the chat app: they can run `/voice:update` there later to add the spoken section. Offer dictation as a fallback if they'd rather stay.
 
 ## Steps
 
@@ -37,7 +37,7 @@ Use only text the user typed themselves. If agents have already written under th
 
 Then collect samples following `references/collecting-samples.md`. By default the user pastes or uploads them; if a tool for one of their sources is already connected, offer to pull them through it. Save everything to a `voice-samples.md` file. Aim for 100+ messages and 20+ longer pieces (tickets, docs, long emails).
 
-Keep `voice-samples.md` next to VOICE.md. A later retune can reuse it instead of refetching.
+Keep `voice-samples.md` next to VOICE.md. `/voice:update` reuses it instead of collecting again.
 
 Read every sample. Rare habits (a strikethrough self-correction, the one joke they make) are exactly what makes a profile convincing, so don't skim.
 
@@ -104,4 +104,4 @@ In the chat app, you can't reach the user's machine: give VOICE.md as a download
 
 Produce two or three outputs the way the user will actually use the plugin: a `/voice:write` message or two in the channels they actually use, and a short `/voice:speak` piece if the interview was done. Ask the user to judge them. Fix the profile, not just the output, so the lesson sticks.
 
-Mention that the real test is live use, and that rerunning `/voice:init` later can retune specific sections.
+Mention that the real test is live use, and that `/voice:update` tunes it anytime: from comments, corrected drafts, new samples, or another interview.

@@ -37,4 +37,4 @@ Give the text ready to paste, with nothing around it: no "Here's a draft", no ex
 
 If a tool is available to post it (a Jira or Slack connector) and the user asked you to post, post it. Otherwise hand it over for them to paste.
 
-When the user corrects a draft ("I'd never say that"), fix the draft, and if it's a pattern rather than a one-off, suggest the matching line to change in VOICE.md.
+When the user corrects a draft ("I'd never say that"), fix the draft, and if it's a pattern rather than a one-off, suggest running `/voice:update` to fix it in VOICE.md.

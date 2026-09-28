@@ -2,9 +2,10 @@
 
 Lets agents write and speak as you without sounding like AI.
 
-- `init`: one-time setup. Learns from examples of your own pre-AI writing (Slack, email, Jira, docs, whatever you use), runs a short spoken interview, and builds `VOICE.md`, plus the CLAUDE.md / AGENTS.md snippet to wire it in. Rerun it anytime to retune.
+- `init`: one-time setup. Learns from examples of your own pre-AI writing (Slack, email, Jira, docs, whatever you use), runs a short spoken interview, and builds `VOICE.md`, plus the CLAUDE.md / AGENTS.md snippet to wire it in.
 - `write`: produces text as you (messages, comments, tickets, emails, docs). This is the default whenever an agent writes under your name.
 - `speak`: produces spoken-style output as you (voice mode, voice notes, talking points).
+- `update`: tunes your `VOICE.md` anytime. Tell it what sounds off, paste an agent draft next to your own rewrite, add new samples, or redo the interview.
 
 ## Where each part runs
 
@@ -16,16 +17,18 @@ In the desktop app, use the **Chat** tab, not the Code tab. Voice mode only exis
 
 **speak: either.** In the chat apps it works with voice mode. In Claude Code it produces text meant to be said out loud.
 
+**update: either.** Comments, corrections and new samples work anywhere. To redo the interview, use the chat app for voice mode.
+
 ## Install
 
-Claude Code (plugin, gives `/voice:init`, `/voice:write`, `/voice:speak`):
+Claude Code (plugin, gives `/voice:init`, `/voice:write`, `/voice:speak`, `/voice:update`):
 
 ```bash
 claude plugin marketplace add evan-mcgeek/skills
 claude plugin install voice@evan-mcgeek-skills
 ```
 
-Claude chat app: download [`init.skill`](https://github.com/evan-mcgeek/skills/raw/main/plugins/voice/init.skill) (and [`speak.skill`](https://github.com/evan-mcgeek/skills/raw/main/plugins/voice/speak.skill) if you want spoken output there) and upload them as skills.
+Claude chat app: download [`init.skill`](https://github.com/evan-mcgeek/skills/raw/main/plugins/voice/init.skill) and [`update.skill`](https://github.com/evan-mcgeek/skills/raw/main/plugins/voice/update.skill), plus [`speak.skill`](https://github.com/evan-mcgeek/skills/raw/main/plugins/voice/speak.skill) if you want spoken output there, and upload them as skills.
 
 ## After init
 
