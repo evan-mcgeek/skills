@@ -1,39 +1,40 @@
 ---
 name: write
-description: Build or update a VOICE.md style profile from a person's own pre-AI writing (Jira comments, ticket descriptions, Confluence pages, Slack, emails), so agents can post as them without sounding like AI, and wire it into CLAUDE.md / AGENTS.md. Invoked as /voice:write. Use whenever someone wants agents to "write like me", "post as me in Jira", clone their writing style, build an impersonation or writing-style profile, or complains that agent-posted comments read like a robot. Pairs with /voice:speak for spoken style.
+description: Write anything on the user's behalf in their own voice, using their VOICE.md (Jira comments and replies, ticket descriptions, investigation results, release updates, Confluence pages, Slack messages, short emails). Invoked as /voice:write, and it is the default whenever an agent produces text that goes out under the user's name, even if they don't mention the skill. Use whenever the user asks to comment, reply, post, create a ticket, or draft a message as them.
 ---
 
 # /voice:write
 
-Produce (or update) a `VOICE.md` from the user's real writing. Success means a colleague who reads their messages every day can't tell an agent wrote it.
+Produce text as the user, following their `VOICE.md`. This is the default whenever output goes out under their name. The goal: a colleague reading it can't tell the user didn't type it.
 
-Build from evidence, not from how the user thinks they write. People describe their own style badly; their real comments don't lie.
+## 1. Load VOICE.md
 
-This is the backbone for anything posted as text. `/voice:speak` adds rhythm from speech on top; if the user wants both, run this first.
+Look in this order: the current project root (`VOICE.md`), `~/.claude/VOICE.md`, anything the user attached or pointed to. Read it in full every time, even if you read it earlier in the session. Voices drift fast when you rely on memory of the file.
 
-## 1. Collect pre-AI samples
+If there's no VOICE.md, say so in one line and suggest `/voice:init`. Don't improvise a voice.
 
-Use only text the user typed themselves. If agents have already posted under their name, those comments sit in the same history, and learning from them clones a clone: the profile drifts toward generic AI style. Ask:
+## 2. Work out what's needed
 
-- Roughly when did you (or your tools) start writing with AI? Use samples from before that.
-- Have any agents posted as you? If yes, exclude those, or ask the user to filter them.
+- **Message type:** investigation result, reply to a question, release update, test instructions, asking for info, delegating, ticket, email, etc. VOICE.md has a pattern for most of them; use it.
+- **Audience:** developer, business/product/QA, or senior person. Pick the register VOICE.md defines for them.
+- **Content:** the facts come from the task (the investigation, the ticket, the thread). Never invent facts, IDs, versions, or people to make a message feel complete. If something essential is missing (who it's for, the build number), ask one short question.
+- **Scope:** if the request falls outside the scope listed in VOICE.md's hard rules (e.g. calling out a colleague), don't write it in the user's name. Say so briefly.
 
-Good sources, in order of value: Jira comments (replies, investigation results, status updates), Jira ticket descriptions, Confluence pages they authored, Slack messages, sent emails. Aim for 100+ comments and 20+ tickets or pages. Skip anything under ~10 words; "done" and "thanks" carry no signal.
+## 3. Write it
 
-How to get them:
-- If an Atlassian / Jira / Confluence connector is available, use it: search by author within the pre-AI date range. Example JQL for tickets: `reporter = currentUser() AND created < "2025-10-01" ORDER BY created DESC`. For comments, fetch issues the user commented on in that range and keep only their comments.
-- Otherwise ask for an exported file (markdown or text, one sample per block, with ticket key and date). A paste works for smaller sets.
+Follow VOICE.md exactly: hard rules first, then structure, openers and closers, signature phrasing, formatting, and the AI tells to avoid. In practice:
 
-Read every sample. Rare habits (a strikethrough self-correction, the one joke they make) are exactly what makes a profile convincing, so don't skim.
+- Keep it as short as the user would. Most of their messages are shorter than your instinct.
+- Signature phrases once or twice, in the spots VOICE.md says they belong. Never stack them.
+- No greeting, sign-off, summary headers, or corporate vocabulary unless VOICE.md says the user does that.
+- Grammar per the hard rule. If it says correct grammar, keep the rhythm and fix the slips.
 
-## 2. Analyze
+Run VOICE.md's final checklist before handing it over.
 
-Work through `references/writing-checklist.md`: structure, rhythm, signature phrases, formatting, audience switching, message types, tickets, non-native markers, AI contamination. Record concrete evidence, a short quote and roughly how often it appears.
+## 4. Deliver
 
-Screen for AI-written samples that slipped through: section headers like "Summary / Action Points / Expected Outcome" or "Proposed Changes", em dashes from someone who never uses them, corporate vocabulary ("leverage", "seamless", "pinpoint"), a greeting and sign-off from someone who never greets. List the suspicious ones and ask whether the user wrote them. Leave them out of the signal until confirmed.
+Give the text ready to paste, with nothing around it: no "Here's a draft", no explanation of choices. If there are a couple of genuinely different ways to go (e.g. short update vs. full investigation write-up), give the likely one and offer the other in a single line.
 
-## 3. Finish
+If a tool is available to post it (a Jira or Slack connector) and the user asked you to post, post it. Otherwise hand it over for them to paste.
 
-Follow `references/finishing.md`: have the user set the grammar, tone, scope, and audience rules, write or update VOICE.md from `references/voice-template.md`, wire it into CLAUDE.md / AGENTS.md, and test with a few drafts.
-
-At the end, if `/voice:speak` hasn't been run, mention it once as an optional next step for capturing their spoken rhythm.
+When the user corrects a draft ("I'd never say that"), fix the draft, and if it's a pattern rather than a one-off, suggest the matching line to change in VOICE.md.

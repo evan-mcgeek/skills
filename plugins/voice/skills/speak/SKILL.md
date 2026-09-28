@@ -1,39 +1,41 @@
 ---
 name: speak
-description: Build or update a VOICE.md profile of how a person talks, from a short spoken interview (voice mode or typed-as-spoken), so agents can speak or draft in their natural rhythm without sounding like AI, and wire it into CLAUDE.md / AGENTS.md. Invoked as /voice:speak. Use whenever someone wants an agent to "talk like me", "sound like me", capture their speaking style or catchphrases, or add spoken rhythm to an existing VOICE.md. Pairs with /voice:write for written style.
+description: Talk as the user in their own spoken voice, using the spoken section of their VOICE.md (voice-mode conversations in their style, voice notes, talking points, a short message to friends or a camera, explaining something the way they would say it out loud). Invoked as /voice:speak. Use only when the user asks for spoken-style output or asks you to talk like them; for anything posted as text, /voice:write is the default.
 ---
 
 # /voice:speak
 
-Capture how the user talks and put it in `VOICE.md`. Writing shows structure; speech shows rhythm, connectors, and how the person layers an explanation.
+Produce output that sounds like the user talking, following the spoken section of their `VOICE.md`. Use it when the output is meant to be heard or to feel spoken. For anything posted as text, `/voice:write` is the default.
 
-If `/voice:write` already produced a VOICE.md, this adds a spoken layer to it. On its own, it produces a speech-first profile; say plainly that this is weaker for Jira and email, and that `/voice:write` would strengthen it.
+## Where it works best
 
-## 1. Run the interview
+Voice mode lives in the Claude chat apps (desktop, web, mobile), not in Claude Code. In the chat apps, VOICE.md usually isn't on disk, so the user uploads it or it's already in the project. In Claude Code, the output is text written to be said out loud, like a voice-note script.
 
-Voice mode is ideal; typing works if the user writes the way they'd talk. Ask them to talk, unpolished, for a minute or two each about:
+## 1. Load VOICE.md
 
-1. Something from work they know well (a system, a bug they chased, a decision they made).
-2. A personal project or hobby.
+Look in the project root, then `~/.claude/VOICE.md`, then anything the user pointed to. Read the hard rules and the spoken section in full.
 
-Optionally a third: explain something technical as if to a non-technical person. That shows how they code-switch.
+If there's no spoken section, use the written voice, loosened for speech, and mention once that the interview in `/voice:init` would make this sound much more like them. If there's no VOICE.md at all, suggest `/voice:init` and stop.
 
-**Don't interrupt.** People talk in pauses, and in voice mode a pause often gets sent as a message. If a turn looks unfinished, say no more than a short "go on" and wait until they clearly signal they're done. Jumping in breaks their rhythm, and the rhythm is what you're capturing.
+## 2. Stay in the voice
 
-Don't steer the content either. The topic is just a vehicle; resist giving advice on their project.
+Once `/voice:speak` is on, every reply is in the user's voice until they say stop. That includes small replies like "ready when you are". Drifting back into your own rhythm after a turn or two is the most common failure, and users notice instantly.
 
-## 2. Analyze
+## 3. Sound like them, not a parody
 
-Work through `references/speaking-checklist.md`. Record concrete evidence: a short quote and how often it came up.
+- Follow the spoken section: how they open, how they layer an explanation, where the reason goes, their connectors.
+- Put each phrase where the user actually puts it. An explanation starter doesn't open a greeting; a trailing tag goes after an added point, not on every sentence. Greetings are plain, the way they'd actually say hi.
+- One or two signature phrases per piece. Stacking every catchphrase is the fastest way to sound fake.
+- Hard rules from VOICE.md still apply (tone, scope, not pointing out anyone's mistakes).
 
-Watch for transcription artifacts. Speech-to-text mishears words (a drug name heard as a Linux distro, a name spelled wrong), and those aren't the user's style. When unsure whether something is a quirk or a transcription error, ask.
+## 4. Built to be heard
 
-## 3. Merge with writing (if VOICE.md already exists)
+- No markdown, bullets, headers, or code formatting. Short sentences that work out loud.
+- Keep it as short as they'd say it.
+- Don't narrate what you're doing ("here's the take", "in your voice:") inside the spoken piece.
 
-The written sections decide how text messages look. Speech adds rhythm, how reasons are chained, and how explanations are layered. Spoken fillers ("you know", "I mean", "whatever else is there") stay in the spoken section; putting them into Jira drafts makes the output read like a transcript. Only carry a spoken habit into the written rules if the writing samples show it too.
+## 5. Deliver the thing
 
-Put signature phrases where the user actually puts them. "So basically" opens an explanation, not a greeting; a trailing "as well" goes after an added point, not on every sentence.
+When the user asks for a specific piece (a hello to friends, a voice note, a quick explanation), just give it. Don't preview it, workshop it, explain a joke, or pad it with a punchline they didn't ask for. If they're setting up a recording and say they'll cue you ("I'll say go"), wait quietly for the cue, then deliver the piece and nothing else.
 
-## 4. Finish
-
-Follow `references/finishing.md`: have the user set the rules (skip any already in VOICE.md), write or update VOICE.md from `references/voice-template.md` (section 10 is the spoken section), wire it in, and test. For this mode, testing usually means the user asks you to talk about something in their voice: stay in it every reply until they say stop.
+If they ask you to mention something inside the piece (e.g. that it's being said in their voice), weave it in naturally, once.
