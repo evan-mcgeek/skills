@@ -36,7 +36,7 @@ jobs:
               print(f"checked: {f}")
           sys.exit(failed)
 
-      - name: Check marketplace lists every plugin with matching versions
+      - name: Check marketplace lists every plugin and none pins a version
         shell: python
         run: |
           import json, pathlib, sys
@@ -53,8 +53,9 @@ jobs:
               manifest = json.loads(pathlib.Path(f"plugins/{name}/.claude-plugin/plugin.json").read_text())
               if manifest.get("name") != name:
                   print(f"::error file=plugins/{name}/.claude-plugin/plugin.json::name is {manifest.get('name')!r}, expected {name!r}"); failed = True
-              if manifest.get("version") != entry.get("version"):
-                  print(f"::error file=.claude-plugin/marketplace.json::{name}: version {entry.get('version')} != plugin.json {manifest.get('version')}"); failed = True
+              for where, obj in ((".claude-plugin/marketplace.json", entry), (f"plugins/{name}/.claude-plugin/plugin.json", manifest)):
+                  if "version" in obj:
+                      print(f"::error file={where}::{name}: remove 'version'; updates track commits instead"); failed = True
               print(f"checked: {name}")
           sys.exit(failed)
 
