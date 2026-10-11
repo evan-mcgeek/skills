@@ -1,0 +1,16 @@
+{
+  "name": "system-design",
+  "description": "System design reference library distilled from big-tech case studies (WhatsApp, YouTube, Stripe, Uber, etc.), with skills to design new systems, analyze existing ones, answer narrow questions and grow the library.",
+  "author": {
+    "name": "Ivan Yanowsky",
+    "email": "evan.mcgeek@gmail.com"
+  },
+  "homepage": "https://github.com/evan-mcgeek/skills",
+  "keywords": [
+    "system-design",
+    "architecture",
+    "scalability",
+    "distributed-systems",
+    "case-studies"
+  ]
+}

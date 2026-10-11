@@ -25,6 +25,14 @@
         "name": "Ivan Yanowsky"
       },
       "source": "./plugins/voice"
+    },
+    {
+      "name": "system-design",
+      "description": "System design reference library distilled from big-tech case studies (WhatsApp, YouTube, Stripe, Uber, etc.), with skills to design new systems, analyze existing ones, answer narrow questions and grow the library.",
+      "author": {
+        "name": "Ivan Yanowsky"
+      },
+      "source": "./plugins/system-design"
     }
   ]
 }
