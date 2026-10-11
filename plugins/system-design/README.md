@@ -10,7 +10,7 @@ It's a set of 4 skills:
 1. `/system-design:create`: designs a new system, tracing each major choice to a cited case study and picking the lighter option when your scale doesn't justify the heavier one.
 2. `/system-design:analyze`: reviews an existing system or codebase and reports only missing load-bearing idioms and unjustified heavier machinery.
 3. `/system-design:question`: answers a narrow question from the library, with a targeted web lookup only if the library doesn't cover it.
-4. `/system-design:add-case-study`: adds a case study from a URL or from existing knowledge and indexes it.
+4. `/system-design:add-case-study`: writes up a case study from a URL or from existing knowledge, indexes it and opens a pull request to this repo.
 
 ## Install
 
@@ -30,8 +30,9 @@ claude plugin install system-design@evan-mcgeek-skills
 
 ## Growing the library
 
-`add-case-study` writes into the installed plugin's own folder, so a plugin update replaces anything you added locally.
-To keep a case study, open a pull request that adds it to `case-studies/` and `pattern-index.md`.
+`add-case-study` writes the case study, indexes it and opens a pull request against this repo, after showing you the draft.
+It needs the [GitHub CLI](https://cli.github.com) logged in, and forks the repo if you don't have push access.
+The case study is also copied into your installed plugin so it works right away, and the next plugin update replaces it with the merged version.
 
 ## Sources
 
